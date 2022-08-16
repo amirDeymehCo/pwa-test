@@ -3,22 +3,27 @@ var createPostArea = document.querySelector("#create-post");
 var closeCreatePostModalButton = document.querySelector(
   "#close-create-post-modal-btn"
 );
+const installApp = document.getElementById("install-app");
+
+installApp.addEventListener("click", () => {
+  console.log("click btn install");
+  if (addApp) {
+    addApp.prompt();
+    addApp.userChoice.then((result) => {
+      console.log(result.outcome);
+      if (result.outcome === "dismissed") {
+        console.log("کابر برنامه را نصب نکرد:(");
+      } else {
+        console.log("کاربر برنامه را نصب کرد:)");
+      }
+
+      addApp = null;
+    });
+  }
+});
 
 function openCreatePostModal() {
   createPostArea.style.display = "block";
-  console.log(modalPrompt);
-  if (modalPrompt) {
-    modalPrompt.prompt();
-    modalPrompt.userChoice.then((result) => {
-      console.log(result.outcome);
-      if (result.outcome === "dismissed") {
-        console.log("propmt delete modal cansel app");
-      } else {
-        console.log("add app to home scrren");
-      }
-      modalPrompt = null;
-    });
-  }
 }
 
 function closeCreatePostModal() {
