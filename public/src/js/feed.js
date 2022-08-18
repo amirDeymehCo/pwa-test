@@ -12,7 +12,7 @@ installApp.addEventListener("click", () => {
     addApp.userChoice.then((result) => {
       console.log(result.outcome);
       if (result.outcome === "dismissed") {
-        console.log("کابر برنامه را نصب نکرد:(");
+        console.log("کاربر برنامه را نصب نکرد:(");
       } else {
         console.log("کاربر برنامه را نصب کرد:)");
       }

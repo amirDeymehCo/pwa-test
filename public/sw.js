@@ -1,13 +1,25 @@
 self.addEventListener("install", (event) => {
-  // console.log("service worker installing event >>>>", event);
+  event.witeUntil(
+    caches.open("static").then((cache) => {
+      console.log("فایل ها در حافظه ی cachts ذخیره شدن:)");
+      cache.add("/");
+      cache.add("/index.html");
+    })
+  );
 });
 
 self.addEventListener("activate", (event) => {
-  // console.log("service worker activate event >>>>", event);
   return self.clients.claim();
 });
 
-// self.addEventListener("fetch", (event) => {
-//   console.log("service worker fetching app event >>>", event);
-//   event.respondWith(fetch(event.request));
-// });
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
+      } else {
+        return fetch(event.request);
+      }
+    })
+  );
+});
