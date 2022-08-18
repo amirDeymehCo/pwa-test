@@ -42,8 +42,8 @@
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#fff",
-  "theme_color": "#00c2c2",
+  "background_color": "#333",
+  "theme_color": "#3f51b5",
   "description": "A simple Instagram Clone, implementing a lot of PWA love.",
   "dir": "ltr",
   "lang": "en-US"
